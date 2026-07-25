@@ -20,7 +20,11 @@ else
 fi
 
 # Rebase-pull to avoid non-fast-forward rejection
-git pull --rebase origin main || { echo "GIT_SYNC_FAIL: rebase-pull failed (resolve conflict manually)"; exit 2; }
+if ! git pull --rebase origin main; then
+  git rebase --abort 2>/dev/null || true
+  echo "GIT_SYNC_FAIL: rebase-pull failed (likely a merge conflict — aborted; resolve manually)"
+  exit 2
+fi
 
 # Push with checked exit code (NOT -q so errors are visible)
 if git push origin main; then
