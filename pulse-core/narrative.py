@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "prediction" / "prevention_out_v3.json"
 
 MODEL = "tencent/hy3:free"
-BASE = os.environ.get("NOUS_BASE_URL", "https://api.nousresearch.com/v1")
+BASE = os.environ.get("NOUS_BASE_URL", "https://inference-api.nousresearch.com/v1")
 
 
 def load():
@@ -49,9 +49,10 @@ def run_free(prompt):
         client = OpenAI(api_key=key, base_url=BASE)
         r = client.chat.completions.create(
             model=MODEL, messages=[{"role": "user", "content": prompt}],
-            temperature=0.3, max_tokens=220,
+            temperature=0.3, max_tokens=2000,
         )
-        return r.choices[0].message.content.strip()
+        msg = r.choices[0].message
+        return (msg.content or "").strip()
     except Exception as e:
         return f"[synthesis pending — model unreachable: {e}]"
 

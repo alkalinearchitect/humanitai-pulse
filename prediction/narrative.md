@@ -1,0 +1,1 @@
+Social pressure is building most strongly in Spelthorne, Adur, Glasgow, Newham, and Hull, where composite risk is flagged as critical. The UK and England overall also show critical composite risk, indicating broad internal strain rather than isolated local issues. Manchester is currently a priority area where pressure is accumulating but has not yet reached critical levels.

@@ -1,0 +1,20 @@
+[
+  {
+    "place": "Spelthorne",
+    "pathway": "isolation -> crisis care",
+    "risk": 98.0,
+    "priority": "high"
+  },
+  {
+    "place": "Adur",
+    "pathway": "isolation -> crisis care",
+    "risk": 91.0,
+    "priority": "high"
+  },
+  {
+    "place": "Glasgow",
+    "pathway": "isolation -> crisis care",
+    "risk": 90.6,
+    "priority": "high"
+  }
+]
