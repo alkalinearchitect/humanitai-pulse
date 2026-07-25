@@ -260,3 +260,14 @@ if __name__ == "__main__":
     print(out["text"])
     print("\n--- JSON (first 400 chars) ---")
     print(json.dumps(out, indent=2)[:400])
+
+    # Persist collected signals to prediction/raw/ so the hourly cron
+    # accumulates real OSINT records in the repo (no data invented: this is
+    # exactly the source-cited output run_scout already produced).
+    raw_dir = os.path.join(os.path.dirname(__file__), "..", "prediction", "raw")
+    os.makedirs(raw_dir, exist_ok=True)
+    stamp = dt.datetime.now(LONDON).strftime("%Y%m%d%H%M")
+    raw_path = os.path.join(raw_dir, f"OSINT_{stamp}.json")
+    with open(raw_path, "w", encoding="utf-8") as fh:
+        json.dump(out, fh, indent=2)
+    print(f"\n[persisted] {raw_path}  signals={len(out.get('signals', []))}")
