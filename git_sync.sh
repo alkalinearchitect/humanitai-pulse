@@ -5,7 +5,11 @@
 # so a non-fast-forward rejection is reported (not silently swallowed).
 set -u
 MSG="${1:-auto: humanitai-pulse update}"
-cd "$(dirname "$0")/.." || exit 1   # repo root (script lives in a subfolder or root)
+
+# Resolve repo root robustly: this script lives at <repo>/git_sync.sh
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR" || { echo "GIT_SYNC_FAIL: cannot cd to repo root ($SCRIPT_DIR)"; exit 1; }
+if [ ! -d .git ]; then echo "GIT_SYNC_FAIL: not inside a git repo ($PWD)"; exit 1; fi
 
 # Stage + commit only if there is something to commit
 if [ -n "$(git status --porcelain)" ]; then
