@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+
+# Data (keep small samples, not raw dumps)
+prediction/raw/
+*.db
+*.sqlite
+
+# Secrets
+*.key
+nous_key*
