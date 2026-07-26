@@ -1,0 +1,25 @@
+{
+  "tasks": {
+    "test_handoff": {
+      "by": "vps-owl",
+      "value": "{\"task\":\"verify site\",\"proof\":\"200 OK\"}",
+      "ts": "2026-07-25T13:36:23.414275Z",
+      "ack": {
+        "by": "mac-owl",
+        "ts": "2026-07-25T13:36:23.486991Z"
+      }
+    },
+    "seo_audit": {
+      "by": "vps-owl",
+      "value": "{\"task\":\"run GEO tracker\",\"proof\":\"cron 1cfcc338511a\"}",
+      "ts": "2026-07-25T13:45:38.931675Z",
+      "ack": null
+    },
+    "lint_test": {
+      "by": "vps-owl",
+      "value": "{\"ok\":1}",
+      "ts": "2026-07-25T13:45:48.452558+00:00Z",
+      "ack": null
+    }
+  }
+}
